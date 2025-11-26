@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | Hafeez Clothing</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo">
+    </div>
+    <div class="nav-controls">
+      <button id="themeToggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+        <i class="fas fa-moon"></i>
+      </button>
+      <div class="hamburger" onclick="toggleMenu(this)">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="products.html">products</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </header>
+
+  <main>
+    <section id="about" class="about">
+      <div class="about-content">
+        <h1>About Me</h1>
+        <main>
+    <section id="home" class="home center-section">
+      <div class="home-content">
+        <img src="images/profile1.jpg" alt="Muzammil Salisu Iro" class="profile">
+        <div class="text-content">
+  <p>
+          <strong>Always taking orders🛒🛒🛒</strong>, I am the dealer of any kind of clothing qualitative one in affordable price <br><br>
+  
+"Wholesale dealer of high-quality materials for shoes, abayas, and shadda. Get the best fabrics and textiles for your business or personal use. Contact me for bulk orders and competitive prices!"<br><br>
+          <strong>Hafeezclothing</strong>. It reflects my love for fashion, dress, and perfume. I’m always delivering to any where you are.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function toggleMenu(icon) {
+      icon.classList.toggle("open");
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    }
+
+    // Load saved theme on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    });
+
+    // Highlight active nav link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      const currentPage = window.location.pathname.split("/").pop();
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+      }
+    });
+  </script>
+</body>
+</html>
